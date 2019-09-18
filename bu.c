@@ -14,11 +14,11 @@ void bu_cpy(bigunsigned *dest, bigunsigned *src) {
   // reset upper 0s in dest
   memset(dest->digit, 0, sizeof(uint32_t)*BU_DIGITS-cnt);
 
-  uint8_t i_dest = 0; // TODO: This is wrong. Fix it.
+  uint8_t i_dest = dest->base; // TODO: This is wrong. Fix it.
   uint8_t i_src = src->base;
 
   while (cnt-- > 0) {
-    dest->digit[i_dest--] = src->digit[i_src--];
+    dest->digit[i_dest++] = src->digit[i_src++];
   }
 }
 
@@ -36,7 +36,7 @@ void bu_shl_ip(bigunsigned* a_ptr, uint16_t cnt) {
   uint16_t bits = cnt &0x1f;// number of bits in a word to shift
 
   uint32_t mask = 0xffffffff << bits;
-
+  uint32_t count =0;
   // You implement. Avoid memory copying as much as possible.
 }
 

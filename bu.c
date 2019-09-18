@@ -14,11 +14,11 @@ void bu_cpy(bigunsigned *dest, bigunsigned *src) {
   // reset upper 0s in dest
   memset(dest->digit, 0, sizeof(uint32_t)*BU_DIGITS-cnt);
 
-  uint8_t i_dest = dest->base; // TODO: This is wrong. Fix it.
-  uint8_t i_src = src->base;
+  uint8_t i_dest = dest->used; // TODO: This is wrong. Fix it.
+  uint8_t i_src = src->used;
 
   while (cnt-- > 0) {
-    dest->digit[i_dest++] = src->digit[i_src++];
+    dest->digit[--i_dest] = src->digit[--i_src];
   }
 }
 
